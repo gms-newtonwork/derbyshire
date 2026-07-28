@@ -15,7 +15,7 @@ export function getLengthOfStayWarnings(needProfile: NeedProfile): ScenarioWarni
     if (cohort.lengthOfStayDays < LENGTH_OF_STAY_WARNING_THRESHOLD_DAYS) {
       warnings.push({
         id: `los-low-${key}`,
-        message: `A length of stay of ${cohort.lengthOfStayDays} days for the ${COHORT_LABELS[key]} cohort is very short — most reablement episodes need at least 10 days to safely reduce someone's care needs. Treat this as an aspirational stretch, not a baseline assumption.`,
+        message: `A length of stay of ${cohort.lengthOfStayDays} days for the ${COHORT_LABELS[key]} cohort is very short — most enablement episodes need at least 10 days to safely reduce someone's care needs. Treat this as an aspirational stretch, not a baseline assumption.`,
       });
     }
   }
@@ -33,7 +33,7 @@ export function getScenarioWarnings(scenario: ScenarioInputs): ScenarioWarning[]
   if (scenario.utilisationTarget >= UTILISATION_WARNING_THRESHOLD) {
     warnings.push({
       id: 'utilisation-high',
-      message: `A utilisation target of ${(scenario.utilisationTarget * 100).toFixed(0)}% is unrealistic — it leaves almost no time for travel, admin or handover between visits. Real-world reablement services rarely sustain utilisation much above 65–70%.`,
+      message: `A utilisation target of ${(scenario.utilisationTarget * 100).toFixed(0)}% is unrealistic — it leaves almost no time for travel, admin or handover between visits. Real-world enablement services rarely sustain utilisation much above 65–70%.`,
     });
   }
 

@@ -22,7 +22,7 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="app-header">
-        <span className="app-title">Reablement capacity &amp; demand model</span>
+        <span className="app-title">Enablement capacity &amp; demand model</span>
         <nav className="app-nav">
           {TABS.map((t) => (
             <button

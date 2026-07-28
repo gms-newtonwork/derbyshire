@@ -1,7 +1,7 @@
-# Reablement capacity & demand model
+# Enablement capacity & demand model
 
 A web-based version of the Targets Refresh Tool: models weekly referral demand
-against reablement service capacity across Derbyshire's 8 areas, and lets you
+against enablement service capacity across Derbyshire's 8 areas, and lets you
 test what-if scenarios (absence, utilisation, vacancy targets, need profile)
 against a fixed historical baseline.
 

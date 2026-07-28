@@ -3,7 +3,7 @@ import { computeOutputs, type ModelOutputs } from '../lib/model/calculations';
 import { defaultHistoricalInputs, defaultScenarioInputs } from '../lib/model/defaultData';
 import type { HistoricalInputs, ScenarioInputs } from '../lib/model/types';
 
-const STORAGE_KEY = 'reablement-model-v1';
+const STORAGE_KEY = 'enablement-model-v1';
 
 interface PersistedState {
   historical: HistoricalInputs;

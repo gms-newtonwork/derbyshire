@@ -9,9 +9,9 @@ interface HomePageProps {
 export function HomePage({ onNavigate, onSelectGuide }: HomePageProps) {
   return (
     <div className="page">
-      <h1>Reablement capacity &amp; demand modelling</h1>
+      <h1>Enablement capacity &amp; demand modelling</h1>
       <p className="page-intro">
-        This tool shows whether your home-based reablement service has the right amount of resource in the
+        This tool shows whether your home-based enablement service has the right amount of resource in the
         right places, and lets you model what performance improvements would unlock.
       </p>
 

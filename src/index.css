@@ -662,3 +662,184 @@ section h2 {
   padding: 6px 16px;
   border-bottom: 1px solid #edcb8a;
 }
+
+/* KPI tiles */
+
+.kpi-tile-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.kpi-tile {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 3px solid var(--border);
+}
+
+.kpi-tile-good {
+  border-top-color: var(--status-balanced-text);
+}
+
+.kpi-tile-bad {
+  border-top-color: var(--status-short-text);
+}
+
+.kpi-tile-neutral {
+  border-top-color: var(--status-headroom-text);
+}
+
+.kpi-tile-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.kpi-tile-value {
+  font-size: 28px;
+  font-weight: 600;
+  font-variant-numeric: normal;
+  line-height: 1.1;
+}
+
+.kpi-tile-good .kpi-tile-value {
+  color: var(--status-balanced-text);
+}
+
+.kpi-tile-bad .kpi-tile-value {
+  color: var(--status-short-text);
+}
+
+.kpi-tile-neutral .kpi-tile-value {
+  color: var(--status-headroom-text);
+}
+
+.kpi-tile-delta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.countywide-commentary {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0;
+}
+
+/* Area cards */
+
+.area-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.area-card {
+  text-align: left;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: inherit;
+}
+
+.area-card-short {
+  border-left-color: var(--status-short-text);
+}
+
+.area-card-balanced {
+  border-left-color: var(--status-balanced-text);
+}
+
+.area-card-surplus {
+  border-left-color: var(--status-surplus-text);
+}
+
+.area-card-headroom {
+  border-left-color: var(--status-headroom-text);
+}
+
+.area-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.area-card-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.area-card-headline {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.area-card-headline-value {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.area-card-headline-unit {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.area-card-takeaway {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.area-card-detail {
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 4px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.area-card-toggle {
+  font-size: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+/* Full detail disclosure */
+
+.full-detail {
+  margin-top: 8px;
+}
+
+.full-detail > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.full-detail > summary:hover {
+  color: var(--text);
+}
+
+.full-detail[open] > summary {
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
