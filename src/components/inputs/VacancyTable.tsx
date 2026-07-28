@@ -2,6 +2,7 @@ import { AREAS, type AreaName, type VacancyAreaInput } from '../../lib/model/typ
 import type { ScenarioAreaHours } from '../../lib/model/calculations';
 import { formatHours, formatPercent } from '../../lib/format';
 import { NumberField } from '../shared/NumberField';
+import { HelpLabel } from '../shared/InfoTooltip';
 
 interface VacancyTableProps {
   vacancyData: Record<AreaName, VacancyAreaInput>;
@@ -18,9 +19,9 @@ export function VacancyTable({ vacancyData, derivedHours, onChange, editable = f
           <th>Area</th>
           <th>Total ESW FTE (incl. vacancies)</th>
           <th>Vacancies (ESW FTE)</th>
-          <th>Total budgeted hrs</th>
-          <th>Vacancy % (calc)</th>
-          <th>Modelled total available hrs/wk (calc)</th>
+          <th><HelpLabel term="totalBudgetedHrs">Total budgeted hrs</HelpLabel></th>
+          <th><HelpLabel term="vacancyRate">Vacancy % (calc)</HelpLabel></th>
+          <th><HelpLabel term="availableHours">Modelled total available hrs/wk (calc)</HelpLabel></th>
         </tr>
       </thead>
       <tbody>

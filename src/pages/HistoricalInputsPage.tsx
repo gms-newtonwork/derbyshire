@@ -22,12 +22,14 @@ export function HistoricalInputsPage() {
         <div className="field-row">
           <NumberField
             label="Total demand — referrals per week"
+            helpTerm="demand"
             value={historical.demandPerWeek}
             step={1}
             onChange={(v) => setHistorical({ ...historical, demandPerWeek: v })}
           />
           <NumberField
             label="Target absence rate (% of available hours, not incl. vacancies)"
+            helpTerm="absenceTarget"
             value={historical.absenceTarget}
             displayScale={100}
             digits={1}
@@ -36,6 +38,7 @@ export function HistoricalInputsPage() {
           />
           <NumberField
             label="Target utilisation rate (% of available hours spent on visits)"
+            helpTerm="utilisationTarget"
             value={historical.utilisationTarget}
             displayScale={100}
             digits={1}

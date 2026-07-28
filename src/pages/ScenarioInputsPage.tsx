@@ -2,7 +2,7 @@ import { useModelStore } from '../store/useModelStore';
 import { AreaSplitTable } from '../components/inputs/AreaSplitTable';
 import { NeedProfileTable } from '../components/inputs/NeedProfileTable';
 import { VacancyTable } from '../components/inputs/VacancyTable';
-import { NumberField } from '../components/shared/NumberField';
+import { SliderNumberField } from '../components/shared/SliderNumberField';
 import type { AreaName, CohortKey, CohortProfile, VacancyAreaInput } from '../lib/model/types';
 
 export function ScenarioInputsPage() {
@@ -28,34 +28,49 @@ export function ScenarioInputsPage() {
 
       <section>
         <h2>1. Demand</h2>
-        <div className="field-row">
-          <NumberField
+        <div className="slider-field-row">
+          <SliderNumberField
             label="Total demand — referrals per week"
+            helpTerm="demand"
             value={scenario.demandPerWeek}
+            min={0}
+            max={250}
             step={1}
             onChange={(v) => setScenario({ ...scenario, demandPerWeek: v })}
           />
-          <NumberField
-            label="Target absence rate (% of available hours, not incl. vacancies)"
+          <SliderNumberField
+            label="Target absence rate"
+            helpTerm="absenceTarget"
             value={scenario.absenceTarget}
+            min={0}
+            max={0.6}
+            step={0.01}
             displayScale={100}
-            digits={1}
+            digits={0}
             suffix="%"
             onChange={(v) => setScenario({ ...scenario, absenceTarget: v })}
           />
-          <NumberField
-            label="Target utilisation rate (% of available hours spent on visits)"
+          <SliderNumberField
+            label="Target utilisation rate"
+            helpTerm="utilisationTarget"
             value={scenario.utilisationTarget}
+            min={0}
+            max={1}
+            step={0.01}
             displayScale={100}
-            digits={1}
+            digits={0}
             suffix="%"
             onChange={(v) => setScenario({ ...scenario, utilisationTarget: v })}
           />
-          <NumberField
+          <SliderNumberField
             label="Target vacancy rate (ESW hours only)"
+            helpTerm="vacancyTarget"
             value={scenario.vacancyTarget}
+            min={0}
+            max={0.5}
+            step={0.01}
             displayScale={100}
-            digits={1}
+            digits={0}
             suffix="%"
             onChange={(v) => setScenario({ ...scenario, vacancyTarget: v })}
           />

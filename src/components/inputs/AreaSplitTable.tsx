@@ -2,6 +2,7 @@ import { AREAS, type AreaName } from '../../lib/model/types';
 import { areaSplitTotal } from '../../lib/model/calculations';
 import { formatPercent } from '../../lib/format';
 import { NumberField } from '../shared/NumberField';
+import { HelpLabel } from '../shared/InfoTooltip';
 
 interface AreaSplitTableProps {
   areaSplit: Record<AreaName, number>;
@@ -18,7 +19,7 @@ export function AreaSplitTable({ areaSplit, onChange, editable = false }: AreaSp
       <thead>
         <tr>
           <th>Area</th>
-          <th>Referrals (% of county)</th>
+          <th><HelpLabel term="areaSplit">Referrals (% of county)</HelpLabel></th>
         </tr>
       </thead>
       <tbody>

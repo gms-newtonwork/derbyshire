@@ -1,6 +1,7 @@
 import { AREAS, type AreaHoursInput, type AreaName } from '../../lib/model/types';
 import { formatHours, formatPercent } from '../../lib/format';
 import { NumberField } from '../shared/NumberField';
+import { HelpLabel } from '../shared/InfoTooltip';
 
 interface WeeklyHoursTableProps {
   areaHours: Record<AreaName, AreaHoursInput>;
@@ -16,8 +17,8 @@ export function WeeklyHoursTable({ areaHours, onChange, editable = false }: Week
           <th>Area</th>
           <th>Actual available visit hrs/wk</th>
           <th>Actual absent hrs/wk</th>
-          <th>Total available hrs/wk (calc)</th>
-          <th>Actual absence % (calc)</th>
+          <th><HelpLabel term="availableHours">Total available hrs/wk (calc)</HelpLabel></th>
+          <th><HelpLabel term="absenceTarget">Actual absence % (calc)</HelpLabel></th>
         </tr>
       </thead>
       <tbody>

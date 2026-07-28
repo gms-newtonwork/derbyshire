@@ -302,3 +302,158 @@ section h2 {
   align-items: center;
   gap: 10px;
 }
+
+/* Help tooltips */
+
+.help-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.info-tooltip {
+  position: relative;
+  display: inline-flex;
+}
+
+.info-tooltip-trigger {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background: var(--bg-subtle);
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.info-tooltip-trigger:hover,
+.info-tooltip-trigger[aria-expanded='true'] {
+  background: var(--header-bg);
+  color: #fff;
+  border-color: var(--header-bg);
+}
+
+.info-tooltip-popover {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  z-index: 20;
+  width: 260px;
+  background: #24292f;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-weight: normal;
+  text-transform: none;
+}
+
+.info-tooltip-popover strong {
+  font-size: 13px;
+}
+
+/* Sliders */
+
+.slider-field-row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.slider-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 220px;
+  flex: 1;
+}
+
+.slider-field-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.slider-field-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-field-controls input[type='range'] {
+  flex: 1;
+}
+
+.slider-field-value-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  min-width: 64px;
+}
+
+.slider-field-value-wrap input {
+  border: none;
+  outline: none;
+  width: 48px;
+  font-size: 14px;
+  background: transparent;
+}
+
+.field-warning {
+  color: var(--status-headroom-text);
+  background: var(--status-headroom-bg);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* Charts */
+
+.chart-pair {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.chart-pair > div {
+  flex: 1;
+  min-width: 320px;
+}
+
+.chart-pair h3 {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+
+/* Status row tinting */
+
+.status-row-short {
+  background: var(--status-short-bg);
+}
+
+.status-row-balanced {
+  background: var(--status-balanced-bg);
+}
+
+.status-row-surplus {
+  background: var(--status-surplus-bg);
+}
+
+.status-row-headroom {
+  background: var(--status-headroom-bg);
+}

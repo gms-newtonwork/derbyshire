@@ -1,5 +1,9 @@
+import type { GlossaryKey } from '../../lib/glossary';
+import { HelpLabel } from './InfoTooltip';
+
 interface NumberFieldProps {
   label: string;
+  helpTerm?: GlossaryKey;
   value: number;
   onChange?: (value: number) => void;
   suffix?: string;
@@ -12,6 +16,7 @@ interface NumberFieldProps {
 
 export function NumberField({
   label,
+  helpTerm,
   value,
   onChange,
   suffix = '',
@@ -25,7 +30,11 @@ export function NumberField({
 
   return (
     <label className="number-field">
-      <span className="number-field-label">{label}</span>
+      {label && (
+        <span className="number-field-label">
+          {helpTerm ? <HelpLabel term={helpTerm}>{label}</HelpLabel> : label}
+        </span>
+      )}
       <span className="number-field-input-wrap">
         <input
           type="number"

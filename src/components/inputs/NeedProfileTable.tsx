@@ -2,6 +2,7 @@ import { COHORTS, COHORT_LABELS, type CohortKey, type CohortProfile, type NeedPr
 import { avgHrsPerPersonPerWeek, effectivenessHrs, needProfileMixTotal } from '../../lib/model/calculations';
 import { formatNumber, formatPercent } from '../../lib/format';
 import { NumberField } from '../shared/NumberField';
+import { HelpLabel } from '../shared/InfoTooltip';
 
 interface NeedProfileTableProps {
   needProfile: NeedProfile;
@@ -18,13 +19,13 @@ export function NeedProfileTable({ needProfile, onChange, editable = false }: Ne
       <thead>
         <tr>
           <th>Cohort</th>
-          <th>Mix (% of starts)</th>
-          <th>Avg weekly hrs at start</th>
-          <th>Avg weekly hrs at end</th>
-          <th>Avg length of stay (days)</th>
-          <th>Successful finisher rate</th>
-          <th>Avg hrs/person/wk (calc)</th>
-          <th>Effectiveness (calc)</th>
+          <th><HelpLabel term="needProfileMix">Mix (% of starts)</HelpLabel></th>
+          <th><HelpLabel term="startHrs">Avg weekly hrs at start</HelpLabel></th>
+          <th><HelpLabel term="endHrs">Avg weekly hrs at end</HelpLabel></th>
+          <th><HelpLabel term="lengthOfStay">Avg length of stay (days)</HelpLabel></th>
+          <th><HelpLabel term="finisherRate">Successful finisher rate</HelpLabel></th>
+          <th><HelpLabel term="avgHrsPerPersonPerWeek">Avg hrs/person/wk (calc)</HelpLabel></th>
+          <th><HelpLabel term="effectiveness">Effectiveness (calc)</HelpLabel></th>
         </tr>
       </thead>
       <tbody>
