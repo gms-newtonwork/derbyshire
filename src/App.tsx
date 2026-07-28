@@ -4,6 +4,7 @@ import { HistoricalInputsPage } from './pages/HistoricalInputsPage';
 import { ScenarioInputsPage } from './pages/ScenarioInputsPage';
 import { OutputsPage } from './pages/OutputsPage';
 import type { GuideId } from './lib/guidedScenarios';
+import { isDemoDataBuild } from './lib/model/defaultData';
 
 type Tab = 'home' | 'historical' | 'scenario' | 'outputs';
 
@@ -35,6 +36,12 @@ export default function App() {
           ))}
         </nav>
       </header>
+      {isDemoDataBuild && (
+        <div className="demo-data-banner">
+          Showing placeholder demo data, not real service figures. Enter your own numbers in Historical
+          Inputs to try it for real — nothing you type here leaves your browser.
+        </div>
+      )}
       <main className="app-main">
         {tab === 'home' && (
           <HomePage

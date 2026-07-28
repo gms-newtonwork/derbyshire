@@ -1,11 +1,12 @@
 import type { HistoricalInputs, ScenarioInputs } from './types';
+import { placeholderHistoricalInputs, placeholderScenarioInputs } from './placeholderData';
 
 /**
  * Historical Inputs tab, as of the latest dashboard refresh captured in
  * Targets_Refresh_Tool_V3.xlsx. This is the factual baseline — only replace
  * these figures when refreshing with new dashboard data.
  */
-export const defaultHistoricalInputs: HistoricalInputs = {
+const derbyshireHistoricalInputs: HistoricalInputs = {
   demandPerWeek: 132,
   absenceTarget: 0.22,
   utilisationTarget: 0.55,
@@ -40,7 +41,7 @@ export const defaultHistoricalInputs: HistoricalInputs = {
  * Scenario Inputs tab, as captured in the workbook — starts as a near-copy of
  * Historical Inputs, with a target vacancy rate and HR FTE data added.
  */
-export const defaultScenarioInputs: ScenarioInputs = {
+const derbyshireScenarioInputs: ScenarioInputs = {
   demandPerWeek: 132,
   absenceTarget: 0.22,
   utilisationTarget: 0.55,
@@ -71,3 +72,14 @@ export const defaultScenarioInputs: ScenarioInputs = {
     'South Derbyshire': { totalEswFte: 21.573, vacanciesFte: 6.0, totalBudgetedHrs: 808.9875 },
   },
 };
+
+/** True only for the public demo build (`npm run build:demo`) — never for local dev, tests, or the normal build. */
+export const isDemoDataBuild = import.meta.env.VITE_DEMO_DATA === 'true';
+
+export const defaultHistoricalInputs: HistoricalInputs = isDemoDataBuild
+  ? placeholderHistoricalInputs
+  : derbyshireHistoricalInputs;
+
+export const defaultScenarioInputs: ScenarioInputs = isDemoDataBuild
+  ? placeholderScenarioInputs
+  : derbyshireScenarioInputs;

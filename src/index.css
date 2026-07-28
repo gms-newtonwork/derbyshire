@@ -653,3 +653,12 @@ section h2 {
   font-size: 14px;
   line-height: 1.6;
 }
+
+.demo-data-banner {
+  background: var(--status-headroom-bg);
+  color: var(--status-headroom-text);
+  text-align: center;
+  font-size: 13px;
+  padding: 6px 16px;
+  border-bottom: 1px solid #edcb8a;
+}
