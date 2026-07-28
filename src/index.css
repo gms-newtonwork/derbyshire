@@ -945,3 +945,25 @@ section h2 {
   font-size: 14px;
   line-height: 1.6;
 }
+
+.performance-levers-panel {
+  background: var(--status-surplus-bg);
+  border: 1px solid #b7cdf0;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 32px;
+}
+
+.performance-levers-panel h2 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.performance-levers-panel ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+}

@@ -36,18 +36,17 @@ export function generateAreaCommentary(
     const scenarioAreaHours = outputs.scenarioAreaHours[area];
     const historicalTotalHrs = historical.areaHours[area].availableHrsPerWeek + historical.areaHours[area].absentHrsPerWeek;
     const recruitingHelps = scenarioAreaHours.actualVacancyRate > scenario.vacancyTarget + 0.005;
+    const surplusAreas = outputs.byArea
+      .filter((r) => r.area !== area && (r.scenarioStatus === 'surplus' || r.scenarioStatus === 'balanced'))
+      .map((r) => r.area);
+    const rebalanceClause =
+      surplusAreas.length > 0 ? `rebalancing referral share from ${surplusAreas.slice(0, 2).join(' or ')}` : 'rebalancing referral share from another area';
 
     let lever: string;
     if (recruitingHelps) {
-      lever = `Recruiting down to your ${formatPercent(scenario.vacancyTarget, 0)} vacancy target here would help — modelled capacity is already ${formatHours(scenarioAreaHours.totalAvailableHrsPerWeek - historicalTotalHrs, 0)} hrs/wk higher than today's actual delivered hours because of it, but it isn't enough on its own.`;
+      lever = `Recruiting down to your ${formatPercent(scenario.vacancyTarget, 0)} vacancy target here would help — modelled capacity is already ${formatHours(scenarioAreaHours.totalAvailableHrsPerWeek - historicalTotalHrs, 0)} hrs/wk higher than today's actual delivered hours because of it, but it isn't enough on its own. Closing the rest doesn't have to mean more recruitment — ${rebalanceClause}, or a countywide reduction in length of stay or ending need (see Performance levers below), would also help.`;
     } else {
-      const surplusAreas = outputs.byArea
-        .filter((r) => r.area !== area && (r.scenarioStatus === 'surplus' || r.scenarioStatus === 'balanced'))
-        .map((r) => r.area);
-      lever =
-        surplusAreas.length > 0
-          ? `Vacancies here are already close to target, so the more realistic lever is rebalancing some referral share from an area with spare capacity, such as ${surplusAreas.slice(0, 2).join(' or ')}.`
-          : `Vacancies here are already close to target, so closing this gap will likely need either a shorter length of stay or additional funded hours.`;
+      lever = `Vacancies here are already close to target, so recruitment has little left to give. The more realistic levers are ${rebalanceClause}, or a countywide reduction in length of stay or ending need for a cohort (see Performance levers below).`;
     }
 
     return `${area} cannot absorb its current demand — ${formatNumber(scenarioGap, 1)} starts a week are being missed.${progressSentence} ${lever}`;
