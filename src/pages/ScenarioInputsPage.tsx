@@ -124,15 +124,18 @@ export function ScenarioInputsPage({ activeGuide, onDismissGuide }: ScenarioInpu
       </section>
 
       <section>
-        <h2>4 &amp; 5. Weekly visit hours by area — modelled from vacancy/FTE data</h2>
+        <h2>4. Weekly visit hours by area — modelled from budgeted hours</h2>
         <p className="section-note">
-          Total available hours per area are derived, not typed in directly: they recruit down toward your
-          target vacancy rate above, capped at whatever your current historical delivered hours already
-          imply — the model won't credit you for vacancies you haven't actually filled.
+          Fix <strong>total budgeted hrs</strong> per area below to what the area would have if every
+          post were filled. Everything else is calculated: current vacancy % compares this to Historical
+          Inputs' actual delivered hours, and modelled capacity recruits down toward your target vacancy
+          rate above — capped at whatever you already deliver today, so the model never credits you for
+          vacancies you haven't actually filled.
         </p>
         <VacancyTable
           vacancyData={scenario.vacancyData}
           derivedHours={scenarioAreaHours}
+          vacancyTarget={scenario.vacancyTarget}
           editable
           onChange={(area: AreaName, field: keyof VacancyAreaInput, value) =>
             setScenario({

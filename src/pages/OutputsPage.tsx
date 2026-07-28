@@ -6,6 +6,7 @@ import { StartsChart } from '../components/outputs/StartsChart';
 import { KpiTile } from '../components/outputs/KpiTile';
 import { AreaCard } from '../components/outputs/AreaCard';
 import { NextStepsPanel } from '../components/guidance/NextStepsPanel';
+import { StaffingActionsPanel } from '../components/guidance/StaffingActionsPanel';
 import { getCountywideKpis } from '../lib/kpis';
 import { generateAreaCommentary, generateCountywideCommentary } from '../lib/commentary';
 import { formatHours, formatNumber, formatPercent, formatSigned } from '../lib/format';
@@ -44,6 +45,8 @@ export function OutputsPage() {
           ))}
         </div>
       </section>
+
+      <StaffingActionsPanel />
 
       <section>
         <NextStepsPanel />

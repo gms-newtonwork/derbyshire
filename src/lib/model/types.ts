@@ -49,10 +49,12 @@ export interface HistoricalInputs {
   areaHours: Record<AreaName, AreaHoursInput>;
 }
 
-/** Scenario Inputs, section 5: HR FTE/vacancy data per area, used to derive scenario capacity. */
+/**
+ * Scenario Inputs, section 5: budgeted hours per area, used to derive scenario
+ * capacity. Vacancy % isn't typed in directly — it's calculated by comparing
+ * this to Historical Inputs' actual delivered hours for the same area.
+ */
 export interface VacancyAreaInput {
-  totalEswFte: number;
-  vacanciesFte: number;
   totalBudgetedHrs: number;
 }
 

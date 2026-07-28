@@ -562,6 +562,7 @@ section h2 {
 }
 
 .field-warning-inline {
+  display: block;
   color: var(--status-headroom-text);
   font-size: 12px;
   margin: 4px 0 0;
@@ -842,4 +843,26 @@ section h2 {
 .full-detail[open] > summary {
   border-bottom: 1px solid var(--border);
   margin-bottom: 16px;
+}
+
+.staffing-actions-panel {
+  background: var(--status-headroom-bg);
+  border: 1px solid #edcb8a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 32px;
+}
+
+.staffing-actions-panel h2 {
+  margin: 0 0 4px;
+  font-size: 16px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.staffing-actions-panel ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.6;
 }

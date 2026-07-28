@@ -62,14 +62,14 @@ const derbyshireScenarioInputs: ScenarioInputs = {
     high: { mix: 0.08, startHrsPerWeek: 32.2, endHrsPerWeek: 27.6, lengthOfStayDays: 32, finisherRate: 0.83 },
   },
   vacancyData: {
-    'Amber Valley': { totalEswFte: 29.361, vacanciesFte: 5.51, totalBudgetedHrs: 1101.0375 },
-    Bolsover: { totalEswFte: 19.637, vacanciesFte: 1.14, totalBudgetedHrs: 736.3875 },
-    Chesterfield: { totalEswFte: 26.278, vacanciesFte: 6.16, totalBudgetedHrs: 985.425 },
-    'Derbyshire Dales': { totalEswFte: 19.295, vacanciesFte: 7.29, totalBudgetedHrs: 723.5625 },
-    Erewash: { totalEswFte: 31.281, vacanciesFte: 8.92, totalBudgetedHrs: 1173.0375 },
-    'High Peak': { totalEswFte: 20.926, vacanciesFte: 4.54, totalBudgetedHrs: 784.725 },
-    'North East Derbyshire': { totalEswFte: 22.519, vacanciesFte: 3.89, totalBudgetedHrs: 844.4625 },
-    'South Derbyshire': { totalEswFte: 21.573, vacanciesFte: 6.0, totalBudgetedHrs: 808.9875 },
+    'Amber Valley': { totalBudgetedHrs: 1101.0375 },
+    Bolsover: { totalBudgetedHrs: 736.3875 },
+    Chesterfield: { totalBudgetedHrs: 985.425 },
+    'Derbyshire Dales': { totalBudgetedHrs: 723.5625 },
+    Erewash: { totalBudgetedHrs: 1173.0375 },
+    'High Peak': { totalBudgetedHrs: 784.725 },
+    'North East Derbyshire': { totalBudgetedHrs: 844.4625 },
+    'South Derbyshire': { totalBudgetedHrs: 808.9875 },
   },
 };
 
