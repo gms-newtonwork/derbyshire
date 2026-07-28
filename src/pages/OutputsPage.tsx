@@ -1,8 +1,8 @@
 import { useModelStore } from '../store/useModelStore';
 import { StatusBadge } from '../components/shared/StatusBadge';
 import { HelpLabel } from '../components/shared/InfoTooltip';
-import { CapacityChart } from '../components/outputs/CapacityChart';
-import { StartsChart } from '../components/outputs/StartsChart';
+import { HoursOverviewChart } from '../components/outputs/HoursOverviewChart';
+import { StartsOverviewChart } from '../components/outputs/StartsOverviewChart';
 import { KpiTile } from '../components/outputs/KpiTile';
 import { AreaCard } from '../components/outputs/AreaCard';
 import { NextStepsPanel } from '../components/guidance/NextStepsPanel';
@@ -22,8 +22,9 @@ export function OutputsPage() {
     <div className="page">
       <h1>Outputs</h1>
       <p className="page-intro">
-        Every figure here is calculated. Baseline reflects Historical Inputs; Scenario reflects Scenario
-        Inputs; Change is the difference between them.
+        Every figure here is calculated. <span className="identity-tag identity-tag-historical">Historical</span>{' '}
+        reflects Historical Inputs; <span className="identity-tag identity-tag-scenario">Scenario</span> reflects
+        Scenario Inputs; Change is the difference between them.
       </p>
 
       <section>
@@ -34,6 +35,15 @@ export function OutputsPage() {
           ))}
         </div>
         <p className="countywide-commentary">{generateCountywideCommentary(outputs)}</p>
+      </section>
+
+      <section>
+        <h2>Capacity vs demand, by area</h2>
+        <p className="section-note">
+          Historical and scenario performance against what's actually needed to meet demand.
+        </p>
+        <HoursOverviewChart rows={byArea} />
+        <StartsOverviewChart rows={byArea} />
       </section>
 
       <section>
@@ -53,7 +63,7 @@ export function OutputsPage() {
       </section>
 
       <details className="full-detail">
-        <summary>Full detail — every table and chart behind the numbers above</summary>
+        <summary>Full detail — every table behind the numbers above</summary>
 
         <section>
           <h2>1. Blended assumptions (from need profile)</h2>
@@ -61,8 +71,8 @@ export function OutputsPage() {
             <thead>
               <tr>
                 <th />
-                <th>Baseline (historical)</th>
-                <th>Scenario (modelled)</th>
+                <th className="col-historical">Historical</th>
+                <th className="col-scenario">Scenario</th>
                 <th>Change</th>
               </tr>
             </thead>
@@ -101,8 +111,8 @@ export function OutputsPage() {
             <thead>
               <tr>
                 <th />
-                <th>Baseline (historical)</th>
-                <th>Scenario (modelled)</th>
+                <th className="col-historical">Historical</th>
+                <th className="col-scenario">Scenario</th>
                 <th>Change</th>
               </tr>
             </thead>
@@ -143,26 +153,16 @@ export function OutputsPage() {
 
         <section>
           <h2>3. By area — capacity vs demand</h2>
-          <div className="chart-pair">
-            <div>
-              <h3>Baseline</h3>
-              <CapacityChart rows={byArea} mode="baseline" />
-            </div>
-            <div>
-              <h3>Scenario</h3>
-              <CapacityChart rows={byArea} mode="scenario" />
-            </div>
-          </div>
           <table className="data-table wide-table">
             <thead>
               <tr>
                 <th>Area</th>
-                <th>Baseline hrs/wk available</th>
-                <th>Baseline required hrs/wk</th>
-                <th>Baseline status</th>
-                <th>Scenario hrs/wk available</th>
-                <th>Scenario required hrs/wk</th>
-                <th>Scenario status</th>
+                <th className="col-historical">Historical hrs/wk available</th>
+                <th className="col-historical">Historical required hrs/wk</th>
+                <th className="col-historical">Historical status</th>
+                <th className="col-scenario">Scenario hrs/wk available</th>
+                <th className="col-scenario">Scenario required hrs/wk</th>
+                <th className="col-scenario">Scenario status</th>
               </tr>
             </thead>
             <tbody>
@@ -194,17 +194,16 @@ export function OutputsPage() {
 
         <section>
           <h2><HelpLabel term="littlesLaw">Starts view (Little's Law: sustainable starts/wk = capacity ÷ hours per start)</HelpLabel></h2>
-          <StartsChart rows={byArea} />
           <table className="data-table wide-table">
             <thead>
               <tr>
                 <th>Area</th>
-                <th><HelpLabel term="startsSupportable">Starts supported (historical performance)</HelpLabel></th>
-                <th><HelpLabel term="startsNeeded">Starts needed for full demand</HelpLabel></th>
-                <th>Gap to meeting demand?</th>
-                <th><HelpLabel term="startsSupportable">Starts supported (target performance)</HelpLabel></th>
-                <th><HelpLabel term="realisticStartsTarget">Realistic starts target</HelpLabel></th>
-                <th>Scenario starts status</th>
+                <th className="col-historical"><HelpLabel term="startsSupportable">Starts supported (historical performance)</HelpLabel></th>
+                <th className="col-historical"><HelpLabel term="startsNeeded">Starts needed for full demand</HelpLabel></th>
+                <th className="col-historical">Gap to meeting demand?</th>
+                <th className="col-scenario"><HelpLabel term="startsSupportable">Starts supported (target performance)</HelpLabel></th>
+                <th className="col-scenario"><HelpLabel term="realisticStartsTarget">Realistic starts target</HelpLabel></th>
+                <th className="col-scenario">Scenario starts status</th>
               </tr>
             </thead>
             <tbody>

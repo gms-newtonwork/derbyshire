@@ -35,7 +35,7 @@ export interface NextStepSuggestion {
 
 /**
  * Suggests an untried lever based on what the user has already changed,
- * and how much of the baseline gap their current scenario has closed.
+ * and how much of the historical gap their current scenario has closed.
  */
 export function getNextStepSuggestions(
   historical: HistoricalInputs,
@@ -75,7 +75,7 @@ export function getNextStepSuggestions(
   if (!utilisationTried) {
     suggestions.push({
       id: 'try-utilisation',
-      message: `Would you like to try what happens if utilisation also improves? It's still at your baseline ${formatPercent(scenario.utilisationTarget, 0)} target.`,
+      message: `Would you like to try what happens if utilisation also improves? It's still at your historical ${formatPercent(scenario.utilisationTarget, 0)} target.`,
     });
   }
 

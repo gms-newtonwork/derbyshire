@@ -8,10 +8,10 @@ import { isDemoDataBuild } from './lib/model/defaultData';
 
 type Tab = 'home' | 'historical' | 'scenario' | 'outputs';
 
-const TABS: { id: Tab; label: string }[] = [
+const TABS: { id: Tab; label: string; indicator?: 'historical' | 'scenario' }[] = [
   { id: 'home', label: 'Home' },
-  { id: 'historical', label: 'Historical Inputs' },
-  { id: 'scenario', label: 'Scenario Inputs' },
+  { id: 'historical', label: 'Historical Inputs', indicator: 'historical' },
+  { id: 'scenario', label: 'Scenario Inputs', indicator: 'scenario' },
   { id: 'outputs', label: 'Outputs' },
 ];
 
@@ -28,7 +28,13 @@ export default function App() {
             <button
               key={t.id}
               type="button"
-              className={t.id === tab ? 'nav-button active' : 'nav-button'}
+              className={[
+                'nav-button',
+                t.id === tab ? 'active' : '',
+                t.indicator ? `nav-button-${t.indicator}` : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
               onClick={() => setTab(t.id)}
             >
               {t.label}

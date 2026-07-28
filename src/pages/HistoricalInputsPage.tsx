@@ -10,8 +10,11 @@ export function HistoricalInputsPage() {
   const setHistorical = useModelStore((s) => s.setHistorical);
 
   return (
-    <div className="page">
-      <h1>Historical Inputs</h1>
+    <div className="page page-accent-historical">
+      <div className="page-title-row">
+        <h1>Historical Inputs</h1>
+        <span className="identity-tag identity-tag-historical">Historical</span>
+      </div>
       <p className="page-intro">
         This is your factual baseline, from the client's dashboard. Only update it when refreshing with new
         dashboard data — every scenario you model is compared back against these numbers.

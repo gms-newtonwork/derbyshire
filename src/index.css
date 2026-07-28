@@ -21,6 +21,14 @@
   --error-text: #a3271b;
   --ok-text: #24693d;
 
+  /* Historical vs Scenario identity — consistent everywhere they're shown side by side. */
+  --historical-accent: #0891b2;
+  --historical-bg: #e0f7fa;
+  --historical-text: #0e7490;
+  --scenario-accent: #c026d3;
+  --scenario-bg: #fae8ff;
+  --scenario-text: #a21caf;
+
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
@@ -69,9 +77,10 @@ body {
 .nav-button {
   background: transparent;
   border: none;
+  border-bottom: 3px solid transparent;
   color: var(--header-text);
   padding: 8px 14px;
-  border-radius: 6px;
+  border-radius: 6px 6px 0 0;
   cursor: pointer;
   font-size: 14px;
 }
@@ -85,6 +94,14 @@ body {
   font-weight: 600;
 }
 
+.nav-button-historical {
+  border-bottom-color: var(--historical-accent);
+}
+
+.nav-button-scenario {
+  border-bottom-color: var(--scenario-accent);
+}
+
 .app-main {
   flex: 1;
   padding: 24px;
@@ -96,6 +113,55 @@ body {
 .page h1 {
   font-size: 26px;
   margin: 0 0 8px;
+}
+
+.page-accent-historical {
+  border-top: 4px solid var(--historical-accent);
+  padding-top: 16px;
+}
+
+.page-accent-scenario {
+  border-top: 4px solid var(--scenario-accent);
+  padding-top: 16px;
+}
+
+.page-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.identity-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.identity-tag-historical {
+  background: var(--historical-bg);
+  color: var(--historical-text);
+}
+
+.identity-tag-scenario {
+  background: var(--scenario-bg);
+  color: var(--scenario-text);
+}
+
+.data-table th.col-historical,
+.change-log-table th.col-historical {
+  background: var(--historical-bg);
+  color: var(--historical-text);
+}
+
+.data-table th.col-scenario,
+.change-log-table th.col-scenario {
+  background: var(--scenario-bg);
+  color: var(--scenario-text);
 }
 
 .page-intro {
@@ -431,22 +497,28 @@ section h2 {
 
 /* Charts */
 
-.chart-pair {
+.chart-legend {
   display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.chart-pair > div {
-  flex: 1;
-  min-width: 320px;
-}
-
-.chart-pair h3 {
-  font-size: 14px;
-  color: var(--text-muted);
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
   margin: 0 0 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.chart-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
 }
 
 /* Status row tinting */

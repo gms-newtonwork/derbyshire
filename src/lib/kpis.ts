@@ -22,7 +22,7 @@ export function getCountywideKpis(outputs: ModelOutputs): KpiTileData[] {
     value: netGap >= 0 ? `+${formatHours(netGap)}` : formatHours(netGap),
     delta:
       Math.abs(netGap - baselineCountywide.netGapHrsPerWeek) > EPSILON
-        ? `vs ${baselineCountywide.netGapHrsPerWeek >= 0 ? '+' : ''}${formatHours(baselineCountywide.netGapHrsPerWeek)} baseline`
+        ? `vs ${baselineCountywide.netGapHrsPerWeek >= 0 ? '+' : ''}${formatHours(baselineCountywide.netGapHrsPerWeek)} historical`
         : undefined,
     tone: netGap >= 0 ? 'good' : 'bad',
   };
@@ -52,7 +52,7 @@ export function getCountywideKpis(outputs: ModelOutputs): KpiTileData[] {
     gapClosedTile = {
       label: 'Gap closed by scenario',
       value: 'n/a',
-      delta: 'no baseline shortfall',
+      delta: 'no historical shortfall',
       tone: 'good',
     };
   }

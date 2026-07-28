@@ -11,14 +11,14 @@ export function ScenarioChangeLog() {
     <div className="scenario-change-log">
       <h3>Your scenario changes so far</h3>
       {changes.length === 0 ? (
-        <p className="change-log-empty">No changes yet — Scenario Inputs still matches your historical baseline.</p>
+        <p className="change-log-empty">No changes yet — Scenario Inputs still matches Historical Inputs.</p>
       ) : (
         <table className="change-log-table">
           <thead>
             <tr>
               <th>Lever</th>
-              <th>Baseline</th>
-              <th>Scenario</th>
+              <th className="col-historical">Historical</th>
+              <th className="col-scenario">Scenario</th>
             </tr>
           </thead>
           <tbody>

@@ -23,10 +23,13 @@ export function ScenarioInputsPage({ activeGuide, onDismissGuide }: ScenarioInpu
   const warnings = getScenarioWarnings(scenario);
 
   return (
-    <div className="page">
+    <div className="page page-accent-scenario">
       <div className="page-header-row">
         <div>
-          <h1>Scenario Inputs</h1>
+          <div className="page-title-row">
+            <h1>Scenario Inputs</h1>
+            <span className="identity-tag identity-tag-scenario">Scenario</span>
+          </div>
           <p className="page-intro">
             This is your playground. Change any value here to model a what-if — the Outputs tab shows the
             impact next to your historical baseline. Nothing you do here touches Historical Inputs.

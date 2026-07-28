@@ -80,10 +80,10 @@ export function generateCountywideCommentary(outputs: ModelOutputs): string {
     if (scenarioGap >= 0) {
       gapSentence = `Your scenario fully closes the countywide gap — from ${formatHours(Math.abs(baselineGap))} hrs/wk short to a surplus of ${formatHours(scenarioGap)} hrs/wk.`;
     } else {
-      gapSentence = `Countywide, you're modelling a net gap of ${formatHours(Math.abs(scenarioGap))} hrs/wk (down from ${formatHours(Math.abs(baselineGap))} hrs/wk at baseline) — you've closed ${closedPct}% of the shortfall so far.`;
+      gapSentence = `Countywide, you're modelling a net gap of ${formatHours(Math.abs(scenarioGap))} hrs/wk (down from ${formatHours(Math.abs(baselineGap))} hrs/wk historically) — you've closed ${closedPct}% of the shortfall so far.`;
     }
   } else {
-    gapSentence = `Countywide capacity already meets demand at baseline, with ${formatHours(baselineGap)} hrs/wk to spare; your scenario changes leave ${formatHours(scenarioGap)} hrs/wk of headroom.`;
+    gapSentence = `Countywide capacity already meets demand historically, with ${formatHours(baselineGap)} hrs/wk to spare; your scenario changes leave ${formatHours(scenarioGap)} hrs/wk of headroom.`;
   }
 
   const areaSentence =
