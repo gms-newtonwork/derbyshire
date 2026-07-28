@@ -42,7 +42,9 @@ export function OutputsPage() {
         <p className="section-note">
           Historical and scenario performance against what's actually needed to meet demand.
         </p>
+        <h3 className="chart-title">Delivered ESW visit hours per week</h3>
         <HoursOverviewChart rows={byArea} />
+        <h3 className="chart-title">Starts per week</h3>
         <StartsOverviewChart rows={byArea} />
       </section>
 
