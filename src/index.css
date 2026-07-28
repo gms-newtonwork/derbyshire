@@ -457,3 +457,190 @@ section h2 {
 .status-row-headroom {
   background: var(--status-headroom-bg);
 }
+
+/* Guided entry */
+
+.guide-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.guide-card {
+  text-align: left;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.guide-card:hover {
+  border-color: var(--header-bg);
+  background: var(--bg-subtle);
+}
+
+.guide-card-question {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.guide-card-description {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.guide-banner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  background: #eef4fb;
+  border: 1px solid #b6d4f2;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.guide-banner p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.guide-banner ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.guide-banner-dismiss {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 14px;
+  height: fit-content;
+}
+
+/* Warnings */
+
+.warning-banner {
+  background: var(--status-headroom-bg);
+  border: 1px solid #edcb8a;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+}
+
+.warning-banner strong {
+  color: var(--status-headroom-text);
+  font-size: 14px;
+}
+
+.warning-banner ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cell-warning {
+  background: var(--status-headroom-bg);
+}
+
+.field-warning-inline {
+  color: var(--status-headroom-text);
+  font-size: 12px;
+  margin: 4px 0 0;
+  max-width: 220px;
+  line-height: 1.4;
+}
+
+/* Scenario change log */
+
+.scenario-change-log {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+}
+
+.scenario-change-log h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.change-log-empty {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.change-log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.change-log-table th,
+.change-log-table td {
+  text-align: left;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.change-log-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 10px 0 0;
+}
+
+/* Commentary and next steps */
+
+.commentary-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.commentary-countywide {
+  font-weight: 600;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.commentary-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.next-steps-panel {
+  background: #eef6ee;
+  border: 1px solid #cfe6cf;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 16px;
+}
+
+.next-steps-panel h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.next-steps-panel ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 14px;
+  line-height: 1.6;
+}

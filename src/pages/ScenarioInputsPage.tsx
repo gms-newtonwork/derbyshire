@@ -3,13 +3,24 @@ import { AreaSplitTable } from '../components/inputs/AreaSplitTable';
 import { NeedProfileTable } from '../components/inputs/NeedProfileTable';
 import { VacancyTable } from '../components/inputs/VacancyTable';
 import { SliderNumberField } from '../components/shared/SliderNumberField';
+import { WarningBanner } from '../components/shared/WarningBanner';
+import { GuideBanner } from '../components/guidance/GuideBanner';
+import { ScenarioChangeLog } from '../components/guidance/ScenarioChangeLog';
 import type { AreaName, CohortKey, CohortProfile, VacancyAreaInput } from '../lib/model/types';
+import type { GuideId } from '../lib/guidedScenarios';
+import { getScenarioWarnings, utilisationWarningMessage } from '../lib/warnings';
 
-export function ScenarioInputsPage() {
+interface ScenarioInputsPageProps {
+  activeGuide: GuideId | null;
+  onDismissGuide: () => void;
+}
+
+export function ScenarioInputsPage({ activeGuide, onDismissGuide }: ScenarioInputsPageProps) {
   const scenario = useModelStore((s) => s.scenario);
   const setScenario = useModelStore((s) => s.setScenario);
   const resetScenarioToHistorical = useModelStore((s) => s.resetScenarioToHistorical);
   const scenarioAreaHours = useModelStore((s) => s.outputs.scenarioAreaHours);
+  const warnings = getScenarioWarnings(scenario);
 
   return (
     <div className="page">
@@ -25,6 +36,12 @@ export function ScenarioInputsPage() {
           Reset to historical
         </button>
       </div>
+
+      {activeGuide && <GuideBanner guideId={activeGuide} onDismiss={onDismissGuide} />}
+
+      <WarningBanner messages={warnings.map((w) => w.message)} />
+
+      <ScenarioChangeLog />
 
       <section>
         <h2>1. Demand</h2>
@@ -61,6 +78,7 @@ export function ScenarioInputsPage() {
             digits={0}
             suffix="%"
             onChange={(v) => setScenario({ ...scenario, utilisationTarget: v })}
+            warning={utilisationWarningMessage(scenario.utilisationTarget)}
           />
           <SliderNumberField
             label="Target vacancy rate (ESW hours only)"

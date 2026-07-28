@@ -3,6 +3,8 @@ import { StatusBadge } from '../components/shared/StatusBadge';
 import { HelpLabel } from '../components/shared/InfoTooltip';
 import { CapacityChart } from '../components/outputs/CapacityChart';
 import { StartsChart } from '../components/outputs/StartsChart';
+import { CommentaryPanel } from '../components/guidance/CommentaryPanel';
+import { NextStepsPanel } from '../components/guidance/NextStepsPanel';
 import { formatHours, formatNumber, formatPercent, formatSigned } from '../lib/format';
 
 export function OutputsPage() {
@@ -17,6 +19,12 @@ export function OutputsPage() {
         Every figure here is calculated. Baseline reflects Historical Inputs; Scenario reflects Scenario
         Inputs; Change is the difference between them.
       </p>
+
+      <section>
+        <h2>What this means</h2>
+        <CommentaryPanel />
+        <NextStepsPanel />
+      </section>
 
       <section>
         <h2>1. Blended assumptions (from need profile)</h2>

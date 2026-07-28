@@ -3,6 +3,7 @@ import { HomePage } from './pages/HomePage';
 import { HistoricalInputsPage } from './pages/HistoricalInputsPage';
 import { ScenarioInputsPage } from './pages/ScenarioInputsPage';
 import { OutputsPage } from './pages/OutputsPage';
+import type { GuideId } from './lib/guidedScenarios';
 
 type Tab = 'home' | 'historical' | 'scenario' | 'outputs';
 
@@ -15,6 +16,7 @@ const TABS: { id: Tab; label: string }[] = [
 
 export default function App() {
   const [tab, setTab] = useState<Tab>('home');
+  const [activeGuide, setActiveGuide] = useState<GuideId | null>(null);
 
   return (
     <div className="app-shell">
@@ -34,9 +36,19 @@ export default function App() {
         </nav>
       </header>
       <main className="app-main">
-        {tab === 'home' && <HomePage onNavigate={(t) => setTab(t)} />}
+        {tab === 'home' && (
+          <HomePage
+            onNavigate={(t) => setTab(t)}
+            onSelectGuide={(id) => {
+              setActiveGuide(id);
+              setTab('scenario');
+            }}
+          />
+        )}
         {tab === 'historical' && <HistoricalInputsPage />}
-        {tab === 'scenario' && <ScenarioInputsPage />}
+        {tab === 'scenario' && (
+          <ScenarioInputsPage activeGuide={activeGuide} onDismissGuide={() => setActiveGuide(null)} />
+        )}
         {tab === 'outputs' && <OutputsPage />}
       </main>
     </div>

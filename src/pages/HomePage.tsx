@@ -1,8 +1,12 @@
+import { GUIDED_SCENARIOS, type GuideId } from '../lib/guidedScenarios';
+import { GuideCard } from '../components/guidance/GuideCard';
+
 interface HomePageProps {
   onNavigate: (tab: 'historical' | 'scenario' | 'outputs') => void;
+  onSelectGuide: (id: GuideId) => void;
 }
 
-export function HomePage({ onNavigate }: HomePageProps) {
+export function HomePage({ onNavigate, onSelectGuide }: HomePageProps) {
   return (
     <div className="page">
       <h1>Reablement capacity &amp; demand modelling</h1>
@@ -12,7 +16,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </p>
 
       <section>
-        <h2>How it's laid out</h2>
+        <h2>What kind of question are you trying to answer today?</h2>
+        <div className="guide-card-grid">
+          {GUIDED_SCENARIOS.map((guide) => (
+            <GuideCard key={guide.id} guide={guide} onSelect={onSelectGuide} />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2>Or go straight to a tab</h2>
         <ul className="home-list">
           <li>
             <button type="button" className="link-button" onClick={() => onNavigate('historical')}>
@@ -34,11 +47,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
           </li>
         </ul>
       </section>
-
-      <p className="home-note">
-        This is layer 1 of the build: the input tabs and core calculations, matching the Excel model exactly.
-        Guided prompts, tooltips, auto-generated commentary and warnings come in later layers.
-      </p>
     </div>
   );
 }

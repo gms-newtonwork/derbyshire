@@ -30,7 +30,13 @@ export function SliderNumberField({
   digits = 0,
   warning,
 }: SliderNumberFieldProps) {
+  // `min`/`max`/`step` are given in the same units as the stored `value` (a
+  // fraction, for % fields) — scale them to display units alongside the value
+  // itself, since the <input> elements below all operate in display units.
   const displayValue = Number((value * displayScale).toFixed(digits));
+  const displayMin = min * displayScale;
+  const displayMax = max * displayScale;
+  const displayStep = step * displayScale;
 
   return (
     <div className="slider-field">
@@ -40,18 +46,18 @@ export function SliderNumberField({
       <div className="slider-field-controls">
         <input
           type="range"
-          min={min}
-          max={max}
-          step={step}
+          min={displayMin}
+          max={displayMax}
+          step={displayStep}
           value={displayValue}
           onChange={(e) => onChange(Number(e.target.value) / displayScale)}
         />
         <span className="slider-field-value-wrap">
           <input
             type="number"
-            min={min}
-            max={max}
-            step={step}
+            min={displayMin}
+            max={displayMax}
+            step={displayStep}
             value={displayValue}
             onChange={(e) => {
               const next = Number(e.target.value);

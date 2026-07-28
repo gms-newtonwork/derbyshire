@@ -3,6 +3,7 @@ import { avgHrsPerPersonPerWeek, effectivenessHrs, needProfileMixTotal } from '.
 import { formatNumber, formatPercent } from '../../lib/format';
 import { NumberField } from '../shared/NumberField';
 import { HelpLabel } from '../shared/InfoTooltip';
+import { lengthOfStayWarningMessage } from '../../lib/warnings';
 
 interface NeedProfileTableProps {
   needProfile: NeedProfile;
@@ -31,6 +32,7 @@ export function NeedProfileTable({ needProfile, onChange, editable = false }: Ne
       <tbody>
         {COHORTS.map((key) => {
           const cohort = needProfile[key];
+          const losWarning = editable ? lengthOfStayWarningMessage(cohort.lengthOfStayDays) : undefined;
           return (
             <tr key={key}>
               <td>{COHORT_LABELS[key]}</td>
@@ -74,7 +76,7 @@ export function NeedProfileTable({ needProfile, onChange, editable = false }: Ne
                   formatNumber(cohort.endHrsPerWeek)
                 )}
               </td>
-              <td>
+              <td className={losWarning ? 'cell-warning' : undefined}>
                 {editable ? (
                   <NumberField
                     label=""
@@ -86,6 +88,7 @@ export function NeedProfileTable({ needProfile, onChange, editable = false }: Ne
                 ) : (
                   formatNumber(cohort.lengthOfStayDays)
                 )}
+                {losWarning && <p className="field-warning-inline">{losWarning}</p>}
               </td>
               <td>
                 {editable ? (
